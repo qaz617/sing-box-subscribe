@@ -162,7 +162,8 @@
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "1m",
-      "tolerance": 50
+      "tolerance": 50,
+      "idle_timeout": "40m"
     },
     {
       "type": "direct",

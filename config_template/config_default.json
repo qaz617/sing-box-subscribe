@@ -134,12 +134,20 @@
       "tag": "Telegram",
       "type": "selector",
       "outbounds": [
-        "auto",
+        "proxy",
         "{all}"
       ]
     },
     {
       "tag": "YouTube",
+      "type": "selector",
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "Google",
       "type": "selector",
       "outbounds": [
         "proxy",
@@ -202,6 +210,13 @@
         "download_detour": "auto"
       },
       {
+        "tag": "site-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/google.srs",
+        "download_detour": "auto"
+      },
+      {
         "tag": "site-openai",
         "type": "remote",
         "format": "binary",
@@ -225,6 +240,7 @@
     ],
     "auto_detect_interface": true,
     "final": "proxy",
+    "find_process": true,
     "rules": [
       {
         "protocol": "dns",
@@ -263,6 +279,10 @@
       {
         "rule_set": "site-youtube",
         "outbound": "YouTube"
+      },
+      {
+        "rule_set": "site-google",
+        "outbound": "Google"
       },
       {
         "rule_set": "site-cn",

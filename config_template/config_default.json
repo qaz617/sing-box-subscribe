@@ -8,6 +8,10 @@
     "independent_cache": true,
     "rules": [
       {
+        "rule_set": "site-category-ads-all",
+        "server": "block"
+      },
+      {
         "domain": [
           "cdn.jsdelivr.net"
         ],
@@ -236,6 +240,13 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/paypal.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "site-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/sing-geosite/rule-set/geosite-category-ads-all.srs",
         "download_detour": "auto"
       },
       {

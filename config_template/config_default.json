@@ -155,6 +155,14 @@
       ]
     },
     {
+      "tag": "PayPal",
+      "type": "selector",
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
       "tag": "OpenAI",
       "type": "selector",
       "outbounds": [
@@ -224,6 +232,13 @@
         "download_detour": "auto"
       },
       {
+        "tag": "site-paypal",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/paypal.srs",
+        "download_detour": "auto"
+      },
+      {
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
@@ -284,6 +299,9 @@
         "rule_set": "site-google",
         "outbound": "Google"
       },
+      {
+        "rule_set": "site-paypal",
+        "outbound": "PayPal"
       {
         "rule_set": "site-cn",
         "outbound": "direct"

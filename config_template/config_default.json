@@ -302,6 +302,7 @@
       {
         "rule_set": "site-paypal",
         "outbound": "PayPal"
+      },
       {
         "rule_set": "site-cn",
         "outbound": "direct"

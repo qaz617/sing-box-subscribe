@@ -127,6 +127,7 @@
   "outbounds": [
     {
       "tag": "proxy",
+      "interrupt_exist_connections": true,
       "type": "selector",
       "outbounds": [
         "auto",
@@ -137,6 +138,7 @@
     {
       "tag": "Telegram",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -145,6 +147,7 @@
     {
       "tag": "YouTube",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -153,6 +156,7 @@
     {
       "tag": "Google",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -161,6 +165,7 @@
     {
       "tag": "PayPal",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -169,6 +174,7 @@
     {
       "tag": "OpenAI",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"

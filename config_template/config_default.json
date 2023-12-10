@@ -85,7 +85,7 @@
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
-      "external_ui_download_url": "https://github.com/CHIZI-0618/yacd/archive/refs/heads/gh-pages.zip",
+      "external_ui_download_url": "https://codeload.github.com/MetaCubeX/metacubexd/zip/refs/heads/gh-pages",
       "external_ui_download_detour": "auto",
       "secret": ""
     },
@@ -155,6 +155,15 @@
     },
     {
       "tag": "Google",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "MediaVideo",
       "type": "selector",
       "interrupt_exist_connections": true,
       "outbounds": [
@@ -256,6 +265,34 @@
         "download_detour": "auto"
       },
       {
+        "tag": "site-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/netflix.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "site-hbo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/hbo.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "site-disney",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/disney.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "geosite-primevideo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/primevideo.srs",
+        "download_detour": "auto"
+      },
+      {
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
@@ -296,11 +333,20 @@
         "outbound": "proxy"
       },
       {
-        "domain": [
-          "clash.razord.top",
-          "yacd.metacubex.one",
-          "yacd.haishan.me",
-          "d.metacubex.one"
+        "domain_keyword": [
+          "ntp",
+          "wx.qlogo",
+          "weixin",
+          "wechat",
+          "wxpay",
+          "wxmp",
+          "miniprogram",
+          "tencent",
+          "tenpay"
+        ],
+        "domain_regex": "^(alt[1-8]-)?mtalk4?(-(staging|dev))?\\.google\\.com$",
+        "domain_suffix": [
+          ".push.apple.com"
         ],
         "outbound": "direct"
       },
@@ -314,11 +360,20 @@
       },
       {
         "rule_set": "site-google",
+        "domain_suffix":
+        [
+          ".xn--ngstr-lra8j.com",
+          ".googleapis.cn"
+        ],
         "outbound": "Google"
       },
       {
         "rule_set": "site-paypal",
         "outbound": "PayPal"
+      },
+      {
+        "rule_set": ["site-tiktok","site-netflix","site-hbo","site-disney","site-primevideo"],
+        "outbound": "MediaVideo"
       },
       {
         "rule_set": "site-cn",

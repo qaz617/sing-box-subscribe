@@ -286,7 +286,7 @@
         "download_detour": "auto"
       },
       {
-        "tag": "geosite-primevideo",
+        "tag": "site-primevideo",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/primevideo.srs",

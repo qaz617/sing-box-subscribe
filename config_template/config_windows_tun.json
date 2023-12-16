@@ -85,7 +85,7 @@
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
-      "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+      "external_ui_download_url": "https://codeload.github.com/MetaCubeX/metacubexd/zip/refs/heads/gh-pages",
       "external_ui_download_detour": "auto",
       "secret": ""
     },
@@ -127,6 +127,7 @@
   "outbounds": [
     {
       "tag": "proxy",
+      "interrupt_exist_connections": true,
       "type": "selector",
       "outbounds": [
         "auto",
@@ -137,6 +138,7 @@
     {
       "tag": "Telegram",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -145,6 +147,7 @@
     {
       "tag": "YouTube",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -153,14 +156,16 @@
     {
       "tag": "Google",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
       ]
     },
     {
-      "tag": "Overseas_Media",
+      "tag": "MediaVideo",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -169,14 +174,7 @@
     {
       "tag": "PayPal",
       "type": "selector",
-      "outbounds": [
-        "proxy",
-        "{all}"
-      ]
-    },
-    {
-      "tag": "Steam",
-      "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -185,6 +183,7 @@
     {
       "tag": "OpenAI",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "proxy",
         "{all}"
@@ -220,77 +219,91 @@
         "tag": "site-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-geosite/rule-set/geosite-cn.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
         "download_detour": "auto"
       },
       {
         "tag": "site-tiktok",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/tiktok.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-tiktok.srs",
         "download_detour": "auto"
       },
       {
         "tag": "site-youtube",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/youtube.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
         "download_detour": "auto"
       },
       {
         "tag": "site-google",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/google.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-google.srs",
         "download_detour": "auto"
       },
       {
         "tag": "site-openai",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/openai.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-openai.srs",
         "download_detour": "auto"
       },
       {
         "tag": "site-paypal",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geosite/paypal.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-paypal.srs",
         "download_detour": "auto"
       },
       {
         "tag": "site-category-ads-all",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-geosite/rule-set/geosite-category-ads-all.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-category-ads-all.srs",
         "download_detour": "auto"
       },
       {
-        "tag": "site-category-media",
+        "tag": "site-netflix",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-geosite/rule-set/geosite-category-media.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-netflix.srs",
         "download_detour": "auto"
       },
       {
-        "tag": "site-steam",
+        "tag": "site-hbo",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-geosite/rule-set/geosite-steam.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-hbo.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "site-disney",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-disney.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "site-primevideo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-primevideo.srs",
         "download_detour": "auto"
       },
       {
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geoip/cn.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-cn.srs",
         "download_detour": "auto"
       },
       {
         "tag": "ip-telegram",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/sing-rule/sing/geo/geoip/telegram.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-telegram.srs",
         "download_detour": "auto"
       }
     ],
@@ -331,17 +344,22 @@
         "outbound": "proxy"
       },
       {
-        "domain": [
-          "clash.razord.top",
-          "yacd.metacubex.one",
-          "yacd.haishan.me",
-          "d.metacubex.one"
+        "domain_keyword": [
+          "ntp",
+          "wx.qlogo",
+          "weixin",
+          "wechat",
+          "wxpay",
+          "wxmp",
+          "miniprogram",
+          "tencent",
+          "tenpay"
+        ],
+        "domain_regex": "^(alt[1-8]-)?mtalk4?(-(staging|dev))?\\.google\\.com$",
+        "domain_suffix": [
+          ".push.apple.com"
         ],
         "outbound": "direct"
-      },
-      {
-        "rule_set": "site-steam",
-        "outbound": "Steam"
       },
       {
         "rule_set": "site-openai",
@@ -353,6 +371,11 @@
       },
       {
         "rule_set": "site-google",
+        "domain_suffix":
+        [
+          ".xn--ngstr-lra8j.com",
+          ".googleapis.cn"
+        ],
         "outbound": "Google"
       },
       {
@@ -360,8 +383,8 @@
         "outbound": "PayPal"
       },
       {
-        "rule_set": "site-category-media",
-        "outbound": "Overseas_Media"
+        "rule_set": ["site-tiktok","site-netflix","site-hbo","site-disney","site-primevideo"],
+        "outbound": "MediaVideo"
       },
       {
         "rule_set": "site-cn",

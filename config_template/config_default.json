@@ -92,6 +92,11 @@
     "cache_file": {
       "enabled": true,
       "store_fakeip": false
+    },
+    "debug": {
+      "max_threads": 400,
+      "memory_limit": 60,
+      "oom_killer": true 
     }
   },
   "inbounds": [
@@ -323,6 +328,11 @@
         "network": "udp",
         "port": 443,
         "outbound": "block"
+      },
+      {
+        "network": "udp",
+        "port": 123,
+        "outbound": "direct"
       },
       {
         "clash_mode": "direct",

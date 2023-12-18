@@ -94,8 +94,11 @@
       "store_fakeip": false
     },
     "debug": {
-      "max_threads": 400,
-      "memory_limit": 60,
+      "gc_percent": 1,
+      "max_stack": 65536,
+      "max_threads": 233,
+      "panic_on_fault": true, 
+      "memory_limit": 8, 
       "oom_killer": true 
     }
   },

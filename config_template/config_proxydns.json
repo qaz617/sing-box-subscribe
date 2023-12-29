@@ -19,7 +19,7 @@
           ".dev",
           ".github.com"
         ],
-        "rule_set": ["site-tiktok","site-geolocation-!cn"]
+        "rule_set": ["site-tiktok","site-geolocation-!cn"],
         "server": "proxyDns"
       },
       {

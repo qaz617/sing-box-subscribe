@@ -285,7 +285,7 @@
         "tag": "site-geolocation-!cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geolocation-!cn.srs",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
         "download_detour": "auto"
       },
       {

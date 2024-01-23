@@ -54,7 +54,8 @@ def parse(data):
                 plugin = str({key: value for key, value in pairs})
         param = param[:param.find('?')]
         node['plugin'] = 'v2ray-plugin'
-        plugin = eval(plugin.replace('true','1'))
+        plugin = plugin.replace('true', '1').replace('false', '0')
+        plugin = eval(plugin)
         result_str = "mode={};{}{}{}{}{}{}{}".format(
             plugin.get("mode", ''),
             'host={};'.format(plugin["host"]) if plugin.get("host") else '',
@@ -81,7 +82,7 @@ def parse(data):
             node['multiplex']['min_streams'] = int(smux_dict['min-streams'])
         if smux_dict.get('padding') == 'True':
             node['multiplex']['padding'] = True
-    param = param.split('/')[0]
+    param = param.split('/')[0].split('?')[0]
     if param.find('@') > -1:
         matcher = re.match(r'(.*?)@(.*):(.*)', param)
         if matcher:
@@ -146,6 +147,10 @@ def parse(data):
             }
         del node['server']
         del node['server_port']
+    if node['method'] == 'chacha20-poly1305':
+        node['method'] = 'chacha20-ietf-poly1305'
+    elif node['method'] == 'xchacha20-poly1305':
+        node['method'] = 'xchacha20-ietf-poly1305'
     if flag:
         return node,node_tls
     else:

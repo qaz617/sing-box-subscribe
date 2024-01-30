@@ -69,7 +69,7 @@ def parse(data):
         node['plugin_opts'] = result_str
     if data[5:].find('protocol') > -1:
         smux = data[5:][data[5:].find('protocol'):]
-        smux_dict = parse_qs(smux)
+        smux_dict = parse_qs(smux.split('#')[0])
         smux_dict = {k: v[0] for k, v in smux_dict.items() if v[0]}
         node['multiplex'] = {
             'enabled': True,
@@ -82,7 +82,11 @@ def parse(data):
             node['multiplex']['min_streams'] = int(smux_dict['min-streams'])
         if smux_dict.get('padding') == 'True':
             node['multiplex']['padding'] = True
-    param = param.split('/')[0].split('?')[0]
+    try: #fuck
+        param = param.split('?')[0]
+        matcher = tool.urlDecode(param) #保留'/'测试能不能解码
+    except:
+        param = param.split('/')[0].split('?')[0] #不能解码说明'/'不是base64内容
     if param.find('@') > -1:
         matcher = re.match(r'(.*?)@(.*):(.*)', param)
         if matcher:

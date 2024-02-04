@@ -134,6 +134,16 @@
       ]
     },
     {
+      "tag": "WeChat",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}",
+        "direct"
+      ]
+    },
+    {
       "tag": "Telegram",
       "type": "selector",
       "interrupt_exist_connections": true,
@@ -284,6 +294,13 @@
         "download_detour": "auto"
       },
       {
+        "tag": "geosite-wechat",
+        "type": "remote",
+        "format": "source",
+        "url": "https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/wechat.srs",
+        "download_detour": "auto"
+      },
+      {
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
@@ -345,6 +362,10 @@
           ".push.apple.com"
         ],
         "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-wechat",
+        "outbound": "WeChat"
       },
       {
         "rule_set": "site-openai",

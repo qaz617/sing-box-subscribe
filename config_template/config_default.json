@@ -12,7 +12,7 @@
         "outbound": "any",
         "server": "localDns"
       },
-	  {
+      {
         "rule_set": "BlockHttpDNS",
         "domain_suffix": [
             ".mcdn.bilivideo.cn",
@@ -57,20 +57,20 @@
       },
       {
         "rule_set": "geosite-geolocation-!cn",
-		"query_type": [
+	"query_type": [
           "A",
           "AAAA"
         ],
         "server": "remote"
       },
-	  {
+      {
         "rule_set": "geosite-geolocation-!cn",
-		"query_type": [
+	"query_type": [
           "CNAME"
         ],
         "server": "proxyDns"
       },
-	  {
+      {
         "query_type": [
             "A",
             "AAAA",
@@ -96,7 +96,7 @@
         "address": "rcode://success",
         "tag": "block"
       },
-	  {
+      {
         "tag": "dns_refused",
         "address": "rcode://refused"
       },
@@ -259,14 +259,14 @@
         "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
         "download_detour": "auto"
       },
-	  {
+      {
         "tag": "geosite-geolocation-!cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
         "download_detour": "auto"
       },
-	  {
+      {
         "tag": "BlockHttpDNS",
         "type": "remote",
         "format": "binary",
@@ -388,7 +388,7 @@
         "clash_mode": "global",
         "outbound": "proxy"
       },
-	  {
+      {
         "rule_set": "BlockHttpDNS",
         "domain_suffix": [
             ".mcdn.bilivideo.cn",
@@ -451,7 +451,7 @@
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "proxy"
       },
-	  {
+      {
         "rule_set": "site-cn",
         "outbound": "direct"
       },

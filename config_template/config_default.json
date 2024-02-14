@@ -8,10 +8,22 @@
     "independent_cache": true,
     "rules": [
       {
-        "domain": [
-          "cdn.jsdelivr.net"
-        ],
+        "disable_cache": true,
+        "outbound": "any",
         "server": "localDns"
+      },
+	  {
+        "rule_set": "BlockHttpDNS",
+        "domain_suffix": [
+            ".mcdn.bilivideo.cn",
+            ".szbdyd.com"
+        ],
+        "domain_regex": [
+            "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+            "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+        ],
+        "server": "block",
+        "disable_cache": true
       },
       {
         "domain_suffix": [
@@ -22,11 +34,6 @@
         ],
         "rule_set": "site-tiktok",
         "server": "proxyDns"
-      },
-      {
-        "disable_cache": true,
-        "outbound": "any",
-        "server": "localDns"
       },
       {
         "domain": "www.gstatic.com",
@@ -49,11 +56,29 @@
         "server": "localDns"
       },
       {
-        "query_type": [
+        "rule_set": "geosite-geolocation-!cn",
+		"query_type": [
           "A",
           "AAAA"
         ],
         "server": "remote"
+      },
+	  {
+        "rule_set": "geosite-geolocation-!cn",
+		"query_type": [
+          "CNAME"
+        ],
+        "server": "proxyDns"
+      },
+	  {
+        "query_type": [
+            "A",
+            "AAAA",
+            "CNAME"
+        ],
+        "invert": true,
+        "server": "dns_refused",
+        "disable_cache": true
       }
     ],
     "servers": [
@@ -70,6 +95,10 @@
       {
         "address": "rcode://success",
         "tag": "block"
+      },
+	  {
+        "tag": "dns_refused",
+        "address": "rcode://refused"
       },
       {
         "address": "fakeip",
@@ -230,6 +259,20 @@
         "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
         "download_detour": "auto"
       },
+	  {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
+        "download_detour": "auto"
+      },
+	  {
+        "tag": "BlockHttpDNS",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/bm7/BlockHttpDNS.srs",
+        "download_detour": "auto"
+      },
       {
         "tag": "site-tiktok",
         "type": "remote",
@@ -345,6 +388,18 @@
         "clash_mode": "global",
         "outbound": "proxy"
       },
+	  {
+        "rule_set": "BlockHttpDNS",
+        "domain_suffix": [
+            ".mcdn.bilivideo.cn",
+            ".szbdyd.com"
+        ],
+        "domain_regex": [
+            "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+            "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+        ],
+        "outbound": "block"
+      },
       {
         "domain_keyword": [
           "ntp",
@@ -393,6 +448,10 @@
         "outbound": "MediaVideo"
       },
       {
+        "rule_set": "geosite-geolocation-!cn",
+        "outbound": "proxy"
+      },
+	  {
         "rule_set": "site-cn",
         "outbound": "direct"
       },

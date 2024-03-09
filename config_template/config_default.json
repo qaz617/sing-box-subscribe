@@ -217,7 +217,7 @@
       ]
     },
     {
-      "tag": "OpenAI",
+      "tag": "Spotify",
       "type": "selector",
       "interrupt_exist_connections": true,
       "outbounds": [
@@ -294,13 +294,6 @@
         "download_detour": "auto"
       },
       {
-        "tag": "site-openai",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-openai.srs",
-        "download_detour": "auto"
-      },
-      {
         "tag": "site-paypal",
         "type": "remote",
         "format": "binary",
@@ -328,6 +321,13 @@
         "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-disney.srs",
         "download_detour": "auto"
       },
+      {
+        "tag": "site-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-spotify.srs",
+        "download_detour": "auto"
+      },  
       {
         "tag": "site-primevideo",
         "type": "remote",
@@ -422,8 +422,8 @@
         "outbound": "WeChat"
       },
       {
-        "rule_set": "site-openai",
-        "outbound": "OpenAI"
+        "rule_set": "site-spotify",
+        "outbound": "Spotify"
       },
       {
         "rule_set": "site-youtube",

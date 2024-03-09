@@ -13,7 +13,6 @@
         "server": "localDns"
       },
       {
-        "rule_set": "BlockHttpDNS",
         "domain_suffix": [
             ".mcdn.bilivideo.cn",
             ".szbdyd.com"
@@ -263,13 +262,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "BlockHttpDNS",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/bm7/BlockHttpDNS.srs",
         "download_detour": "auto"
       },
       {

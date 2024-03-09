@@ -380,7 +380,6 @@
         "outbound": "proxy"
       },
       {
-        "rule_set": "BlockHttpDNS",
         "domain_suffix": [
             ".mcdn.bilivideo.cn",
             ".szbdyd.com"

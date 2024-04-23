@@ -255,99 +255,99 @@
         "tag": "site-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "geosite-geolocation-!cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-tiktok",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-tiktok.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-tiktok.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-youtube",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-google",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-google.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-google.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-paypal",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-paypal.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-paypal.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-netflix",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-netflix.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-netflix.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-hbo",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-hbo.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-hbo.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-disney",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-disney.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-disney.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "site-spotify",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-spotify.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-spotify.srs",
+        "download_detour": "direct"
       },  
       {
         "tag": "site-primevideo",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-primevideo.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-primevideo.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "geosite-wechat",
         "type": "remote",
         "format": "source",
-        "url": "https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/wechat.json",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/wechat.json",
+        "download_detour": "direct"
       },
       {
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-cn.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-cn.srs",
+        "download_detour": "direct"
       },
       {
         "tag": "ip-telegram",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-telegram.srs",
-        "download_detour": "auto"
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-telegram.srs",
+        "download_detour": "direct"
       }
     ],
     "auto_detect_interface": true,

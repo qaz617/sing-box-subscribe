@@ -297,7 +297,7 @@
         "type": "remote",
         "format": "binary",
         "url": "https://adrules.top/adrules-singbox.srs",
-        "download_detout": "direct"
+        "download_detour": "direct"
       },
       {
         "tag": "site-spotify",

@@ -22,6 +22,7 @@
             "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
             "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
         ],
+        "rule_set": "geosite-category-ads-all",
         "server": "block",
         "disable_cache": true
       },
@@ -292,6 +293,13 @@
         "download_detour": "direct"
       },
       {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://adrules.top/adrules-singbox.srs",
+        "download_detout": "direct"
+      },
+      {
         "tag": "site-spotify",
         "type": "remote",
         "format": "binary",
@@ -342,6 +350,10 @@
       {
         "network": "udp",
         "port": 443,
+        "outbound": "block"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
         "outbound": "block"
       },
       {

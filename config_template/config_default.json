@@ -43,7 +43,6 @@
           "tencent",
           "tenpay"
         ],
-        "domain_regex": "^(alt[1-8]-)?mtalk4?(-(staging|dev))?\\.google\\.com$",
         "domain_suffix": [
           ".push.apple.com"
         ],

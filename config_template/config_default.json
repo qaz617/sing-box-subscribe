@@ -59,7 +59,7 @@
             "invert": true
           },
           {
-            "rule_set": "geoip-cn"
+            "rule_set": "ip-cn"
           }
         ],
         "server": "proxyDns",

@@ -1,6 +1,5 @@
 {
   "dns": {
-    "final": "localDns",
     "independent_cache": true,
     "rules": [
       {
@@ -67,7 +66,7 @@
     ],
     "servers": [
       {
-        "address": "8.8.8.8",
+        "address": "tls://8.8.8.8",
         "detour": "proxy",
         "tag": "proxyDns"
       },

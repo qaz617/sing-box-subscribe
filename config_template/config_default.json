@@ -377,10 +377,6 @@
         "outbound": "direct"
       },
       {
-        "rule_set": "geosite-wechat",
-        "outbound": "WeChat"
-      },
-      {
         "rule_set": "site-spotify",
         "outbound": "Spotify"
       },

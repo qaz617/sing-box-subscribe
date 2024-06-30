@@ -67,7 +67,7 @@
     ],
     "servers": [
       {
-        "address": "tcp://8.8.8.8",
+        "address": "udp://8.8.8.8",
         "detour": "proxy",
         "tag": "proxyDns"
       },

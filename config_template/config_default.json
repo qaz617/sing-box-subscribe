@@ -83,7 +83,7 @@
         "tag": "proxyDns"
       },
       {
-        "address": "quic://223.5.5.5",
+        "address": "tcp://223.5.5.5",
         "detour": "direct",
         "tag": "localDns"
       },

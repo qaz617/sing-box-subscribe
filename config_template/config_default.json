@@ -30,22 +30,34 @@
         "server": "proxyDns"
       },
       {
-        "domain": "www.gstatic.com",
-        "domain_keyword": [
-          "ntp",
-          "wx.qlogo",
-          "weixin",
-          "wechat",
-          "wxpay",
-          "wxmp",
-          "miniprogram",
-          "tencent",
-          "tenpay"
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "domain": "www.gstatic.com"
+          },
+          {
+            "domain_keyword": [
+              "ntp",
+              "wx.qlogo",
+              "weixin",
+              "wechat",
+              "wxpay",
+              "wxmp",
+              "miniprogram",
+              "tencent",
+              "tenpay"
+            ]
+          },
+          {
+            "domain_suffix": [
+              ".push.apple.com"
+            ]
+          },
+          {
+            "rule_set": "site-cn"
+          }
         ],
-        "domain_suffix": [
-          ".push.apple.com"
-        ],
-        "rule_set": "site-cn",
         "server": "localDns"
       },
       {

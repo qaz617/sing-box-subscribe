@@ -20,6 +20,11 @@
         "disable_cache": true
       },
       {
+        "rule_set": "adguard",
+        "server": "block",
+        "disable_cache": true
+      },
+      {
         "domain_suffix": [
           ".xn--ngstr-lra8j.com",
           ".googleapis.cn",
@@ -313,6 +318,13 @@
         "download_detour": "direct"
       },
       {
+        "tag": "adguard",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/sing-geosite/rule-set/adguard.srs",
+        "download_detour": "direct"
+      },
+      {
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
@@ -407,6 +419,9 @@
           },
           {
             "protocol": "stun"
+          },
+          {
+            "rule_set": "adguard"
           }
         ],
         "outbound": "block"

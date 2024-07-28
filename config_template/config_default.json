@@ -321,7 +321,7 @@
         "tag": "adguard",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/sing-geosite/rule-set/adguard.srs",
+        "url": "https://adrules.top/adrules-singbox.srs",
         "download_detour": "direct"
       },
       {

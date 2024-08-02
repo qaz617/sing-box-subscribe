@@ -337,14 +337,14 @@
         "tag": "pinduoduo",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/pinduoduo.srs",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-pinduoduo.srs",
         "download_detour": "direct"
       },
       {
         "tag": "microsoft",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/microsoft.srs",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-microsoft.srs",
         "download_detour": "direct"
       },
       {

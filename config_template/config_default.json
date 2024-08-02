@@ -20,7 +20,7 @@
         "disable_cache": true
       },
       {
-        "rule_set": "adguard",
+        "rule_set": ["adguard","pinduoduo"],
         "server": "block",
         "disable_cache": true
       },
@@ -208,6 +208,15 @@
       ]
     },
     {
+      "tag": "Microsoft",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
       "tag": "auto",
       "type": "urltest",
       "outbounds": [
@@ -325,6 +334,20 @@
         "download_detour": "direct"
       },
       {
+        "tag": "pinduoduo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/pinduoduo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/microsoft.srs",
+        "download_detour": "direct"
+      },
+      {
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
@@ -421,7 +444,7 @@
             "protocol": "stun"
           },
           {
-            "rule_set": "adguard"
+            "rule_set": ["adguard","pinduoduo"]
           }
         ],
         "outbound": "block"
@@ -450,6 +473,10 @@
       {
         "rule_set": ["site-tiktok","site-netflix","site-hbo","site-disney","site-primevideo"],
         "outbound": "MediaVideo"
+      },
+      {
+        "rule_set": "microsoft",
+        "outbound": "Microsoft"
       },
       {
         "rule_set": "geosite-geolocation-!cn",

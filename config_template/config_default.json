@@ -1,0 +1,499 @@
+{
+  "dns": {
+    "independent_cache": true,
+    "rules": [
+      {
+        "disable_cache": true,
+        "outbound": "any",
+        "server": "localDns"
+      },
+      {
+        "domain_suffix": [
+            ".mcdn.bilivideo.cn",
+            ".szbdyd.com"
+        ],
+        "domain_regex": [
+            "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+            "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+        ],
+        "server": "block",
+        "disable_cache": true
+      },
+      {
+        "rule_set": ["adguard","pinduoduo"],
+        "server": "block",
+        "disable_cache": true
+      },
+      {
+        "domain_suffix": [
+          ".xn--ngstr-lra8j.com",
+          ".googleapis.cn",
+          ".dev",
+          ".github.com"
+        ],
+        "rule_set": "site-tiktok",
+        "server": "proxyDns"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "domain": "www.gstatic.com"
+          },
+          {
+            "domain_keyword": [
+              "ntp",
+              "wx.qlogo",
+              "weixin",
+              "wechat",
+              "wxpay",
+              "wxmp",
+              "miniprogram",
+              "tencent",
+              "tenpay"
+            ]
+          },
+          {
+            "domain_suffix": [
+              ".push.apple.com"
+            ]
+          },
+          {
+            "rule_set": "site-cn"
+          }
+        ],
+        "server": "localDns"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "ip-cn"
+          }
+        ],
+        "server": "proxyDns",
+        "client_subnet": "114.114.114.114/24"
+      }
+    ],
+    "servers": [
+      {
+        "address": "https://208.67.222.222/dns-query",
+        "detour": "proxy",
+        "tag": "proxyDns"
+      },
+      {
+        "address": "tcp://223.5.5.5",
+        "detour": "direct",
+        "tag": "localDns"
+      },
+      {
+        "address": "rcode://success",
+        "tag": "block"
+      }
+    ]
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "external_ui_download_url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/metacubexd/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "secret": ""
+    },
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": false
+    }
+  },
+  "inbounds": [
+    {
+      "auto_route": true,
+      "endpoint_independent_nat": false,
+      "inet4_address": "172.19.0.1/30",
+      "sniff_override_destination": false,
+      "mtu": 1400,
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      },
+      "sniff": true,
+      "stack": "mixed",
+      "strict_route": true,
+      "type": "tun"
+    },
+    {
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "type": "mixed",
+      "users": []
+    }
+  ],
+  "log": {
+    "level": "error",
+    "timestamp": true
+  },
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "interrupt_exist_connections": true,
+      "type": "selector",
+      "outbounds": [
+        "auto",
+        "direct",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "Telegram",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "YouTube",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "Google",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "MediaVideo",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "PayPal",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "Spotify",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "Microsoft",
+      "type": "selector",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "proxy",
+        "{all}"
+      ]
+    },
+    {
+      "tag": "auto",
+      "type": "urltest",
+      "outbounds": [
+        "{all}"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50,
+      "idle_timeout": "40m"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "rule_set": [
+      {
+        "tag": "site-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-tiktok",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-tiktok.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-youtube",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-paypal",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-paypal.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-hbo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-hbo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-disney",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-disney.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "site-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-spotify.srs",
+        "download_detour": "direct"
+      },  
+      {
+        "tag": "site-primevideo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-primevideo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-geolocation-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "adguard",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://adrules.top/adrules-singbox.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "pinduoduo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-pinduoduo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-microsoft.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "ip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "ip-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-telegram.srs",
+        "download_detour": "direct"
+      }
+    ],
+    "auto_detect_interface": true,
+    "final": "proxy",
+    "find_process": true,
+    "rules": [
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "protocol": "dns"
+          },
+          {
+            "port": 53
+          }
+        ],
+        "outbound": "dns-out"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "outbound": "block"
+      },
+      {
+        "network": "udp",
+        "port": 123,
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "proxy"
+      },
+      {
+        "domain_suffix": [
+            ".mcdn.bilivideo.cn",
+            ".szbdyd.com"
+        ],
+        "domain_regex": [
+            "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+            "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+        ],
+        "outbound": "block"
+      },
+      {
+        "domain_keyword": [
+          "ntp",
+          "wx.qlogo",
+          "weixin",
+          "wechat",
+          "wxpay",
+          "wxmp",
+          "miniprogram",
+          "tencent",
+          "tenpay"
+        ],
+        "domain_suffix": [
+          ".push.apple.com"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          },
+          {
+            "rule_set": ["adguard","pinduoduo"]
+          }
+        ],
+        "outbound": "block"
+      },
+      {
+        "rule_set": "site-spotify",
+        "outbound": "Spotify"
+      },
+      {
+        "rule_set": "site-youtube",
+        "outbound": "YouTube"
+      },
+      {
+        "rule_set": "site-google",
+        "domain_suffix":
+        [
+          ".xn--ngstr-lra8j.com",
+          ".googleapis.cn"
+        ],
+        "outbound": "Google"
+      },
+      {
+        "rule_set": "site-paypal",
+        "outbound": "PayPal"
+      },
+      {
+        "rule_set": ["site-tiktok","site-netflix","site-hbo","site-disney","site-primevideo"],
+        "outbound": "MediaVideo"
+      },
+      {
+        "rule_set": "microsoft",
+        "outbound": "Microsoft"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "outbound": "proxy"
+      },
+      {
+        "rule_set": "site-cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "ip-telegram",
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": "ip-cn",
+        "outbound": "direct"
+      }
+    ]
+  }
+}

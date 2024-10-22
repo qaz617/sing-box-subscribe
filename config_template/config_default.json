@@ -351,14 +351,14 @@
         "tag": "ip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-cn.srs",
+        "url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs",
         "download_detour": "direct"
       },
       {
         "tag": "ip-telegram",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/singbox_ip_rule_set/geoip-telegram.srs",
+        "url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs",
         "download_detour": "direct"
       }
     ],

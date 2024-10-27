@@ -330,7 +330,7 @@
         "tag": "adguard",
         "type": "remote",
         "format": "binary",
-        "url": "https://adrules.top/adrules-singbox.srs",
+        "url": "https://ghp.3636853.xyz/https://raw.githubusercontent.com/Cats-Team/AdRules/refs/heads/main/adrules-singbox.srs",
         "download_detour": "direct"
       },
       {

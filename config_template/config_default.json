@@ -115,7 +115,7 @@
     {
       "auto_route": true,
       "endpoint_independent_nat": false,
-      "inet4_address": "172.19.0.1/30",
+      "address": "172.19.0.1/30",
       "sniff_override_destination": false,
       "mtu": 1400,
       "platform": {

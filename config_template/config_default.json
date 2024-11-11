@@ -20,7 +20,7 @@
         "disable_cache": true
       },
       {
-        "rule_set": ["adguard","pinduoduo"],
+        "rule_set": ["adguard"],
         "server": "block",
         "disable_cache": true
       },
@@ -128,7 +128,8 @@
       "sniff": true,
       "stack": "mixed",
       "strict_route": false,
-      "type": "tun"
+      "type": "tun",
+      "tag": "tun-in"
     },
     {
       "listen": "127.0.0.1",
@@ -230,14 +231,6 @@
     {
       "type": "direct",
       "tag": "direct"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    },
-    {
-      "type": "block",
-      "tag": "block"
     }
   ],
   "route": {
@@ -334,13 +327,6 @@
         "download_detour": "direct"
       },
       {
-        "tag": "pinduoduo",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://ghp.3636853.xyz/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-pinduoduo.srs",
-        "download_detour": "direct"
-      },
-      {
         "tag": "microsoft",
         "type": "remote",
         "format": "binary",
@@ -367,17 +353,12 @@
     "find_process": true,
     "rules": [
       {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "protocol": "dns"
-          },
-          {
-            "port": 53
-          }
-        ],
-        "outbound": "dns-out"
+        "inbound": "tun-in",
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
       },
       {
         "ip_is_private": true,
@@ -386,7 +367,7 @@
       {
         "network": "udp",
         "port": 443,
-        "outbound": "block"
+        "outbound": "reject"
       },
       {
         "network": "udp",
@@ -410,7 +391,7 @@
             "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
             "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
         ],
-        "outbound": "block"
+        "outbound": "reject"
       },
       {
         "domain_keyword": [
@@ -444,10 +425,10 @@
             "protocol": "stun"
           },
           {
-            "rule_set": ["adguard","pinduoduo"]
+            "rule_set": ["adguard"]
           }
         ],
-        "outbound": "block"
+        "outbound": "reject"
       },
       {
         "rule_set": "site-spotify",

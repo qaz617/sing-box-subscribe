@@ -419,7 +419,7 @@
         "rules": [
           {
             "port": 853,
-            "network": "tcp",
+            "network": "tcp"
           },
           {
             "network": "udp",

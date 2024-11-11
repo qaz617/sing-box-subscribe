@@ -4,6 +4,7 @@
     "rules": [
       {
         "disable_cache": true,
+        "action": "route-options",
         "outbound": "any",
         "server": "localDns"
       },
@@ -17,11 +18,13 @@
             "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
         ],
         "server": "block",
+        "action": "route-options",
         "disable_cache": true
       },
       {
         "rule_set": ["adguard"],
         "server": "block",
+        "action": "route-options",
         "disable_cache": true
       },
       {
@@ -78,6 +81,7 @@
           }
         ],
         "server": "proxyDns",
+        "action": "route-options",
         "client_subnet": "114.114.114.114/24"
       }
     ],

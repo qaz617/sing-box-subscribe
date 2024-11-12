@@ -1,100 +1,77 @@
 {
   "dns": {
-    "independent_cache": true,
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "tcp://1.1.1.1",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "proxy"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "https://dns.alidns.com/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_resolver",
+        "address": "223.5.5.5",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_success",
+        "address": "rcode://success"
+      },
+      {
+        "tag": "dns_refused",
+        "address": "rcode://refused"
+      },
+      {
+        "tag": "dns_fakeip",
+        "address": "fakeip"
+      }
+    ],
     "rules": [
       {
         "outbound": "any",
-        "server": "localDns"
+        "server": "dns_resolver"
       },
       {
-        "domain_suffix": [
-            ".mcdn.bilivideo.cn",
-            ".szbdyd.com"
+        "rule_set": "geosite-geolocation-!cn",
+        "query_type": [
+          "A",
+          "AAAA"
         ],
-        "domain_regex": [
-            "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
-            "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
-        ],
-        "server": "block"
+        "server": "dns_fakeip"
       },
       {
-        "rule_set": ["adguard"],
-        "server": "block"
+        "rule_set": "geosite-geolocation-!cn",
+        "query_type": [
+          "CNAME"
+        ],
+        "server": "dns_proxy"
       },
       {
-        "domain_suffix": [
-          ".xn--ngstr-lra8j.com",
-          ".googleapis.cn",
-          ".dev",
-          ".github.com"
+        "query_type": [
+          "A",
+          "AAAA",
+          "CNAME"
         ],
-        "rule_set": "site-tiktok",
-        "server": "proxyDns"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "domain": "www.gstatic.com"
-          },
-          {
-            "domain_keyword": [
-              "ntp",
-              "wx.qlogo",
-              "weixin",
-              "wechat",
-              "wxpay",
-              "wxmp",
-              "miniprogram",
-              "tencent",
-              "tenpay"
-            ]
-          },
-          {
-            "domain_suffix": [
-              ".push.apple.com"
-            ]
-          },
-          {
-            "rule_set": "site-cn"
-          }
-        ],
-        "server": "localDns"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geosite-geolocation-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "ip-cn"
-          }
-        ],
-        "server": "proxyDns",
+        "invert": true,
+        "server": "dns_refused",
         "action": "route-options",
-        "client_subnet": "114.114.114.114/24"
+        "disable_cache": true
       }
     ],
-    "servers": [
-      {
-        "address": "https://208.67.222.222/dns-query",
-        "detour": "proxy",
-        "tag": "proxyDns"
-      },
-      {
-        "address": "tcp://223.5.5.5",
-        "detour": "direct",
-        "tag": "localDns"
-      },
-      {
-        "address": "rcode://success",
-        "tag": "block"
-      }
-    ]
+    "final": "dns_direct",
+    "independent_cache": true,
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    }
   },
   "experimental": {
     "clash_api": {

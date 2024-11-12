@@ -3,8 +3,6 @@
     "independent_cache": true,
     "rules": [
       {
-        "disable_cache": true,
-        "action": "route-options",
         "outbound": "any",
         "server": "localDns"
       },
@@ -17,15 +15,11 @@
             "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
             "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
         ],
-        "server": "block",
-        "action": "route-options",
-        "disable_cache": true
+        "server": "block"
       },
       {
         "rule_set": ["adguard"],
-        "server": "block",
-        "action": "route-options",
-        "disable_cache": true
+        "server": "block"
       },
       {
         "domain_suffix": [

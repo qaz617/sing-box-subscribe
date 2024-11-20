@@ -1,0 +1,233 @@
+{
+    "log": {
+        "level": "info",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_proxy",
+                "address": "tcp://1.1.1.1",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "proxy"
+            },
+            {
+                "tag": "dns_direct",
+                "address": "https://dns.alidns.com/dns-query",
+                "address_resolver": "dns_resolver",
+                "strategy": "ipv4_only",
+                "detour": "direct"
+            },
+            {
+                "tag": "dns_resolver",
+                "address": "223.5.5.5",
+                "detour": "direct"
+            },
+            {
+                "tag": "dns_success",
+                "address": "rcode://success"
+            },
+            {
+                "tag": "dns_refused",
+                "address": "rcode://refused"
+            },
+            {
+                "tag": "dns_fakeip",
+                "address": "fakeip"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "server": "dns_resolver"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "server": "dns_fakeip"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "query_type": [
+                    "CNAME"
+                ],
+                "server": "dns_proxy"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA",
+                    "CNAME"
+                ],
+                "invert": true,
+                "server": "dns_refused",
+                "action": "route-options",
+                "disable_cache": true
+            }
+        ],
+        "final": "dns_direct",
+        "independent_cache": true,
+        "fakeip": {
+            "enabled": true,
+            "inet4_range": "198.18.0.0/15"
+        }
+    },
+    "route": {
+        "rule_set": [
+            {
+              "tag": "geosite-youtube",
+              "type": "remote",
+              "format": "binary",
+              "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-youtube.srs",
+              "download_detour": "direct"
+            },
+            {
+              "tag": "geosite-microsoft",
+              "type": "remote",
+              "format": "binary",
+              "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-microsoft.srs",
+              "download_detour": "direct"
+            },
+            {
+              "tag": "geosite-geolocation-!cn",
+              "type": "remote",
+              "format": "binary",
+              "url": "https://ghp.yeye.moe/https://raw.githubusercontent.com/qaz617/geo-dat/release/geosite_rule_set/geosite-geolocation-!cn.srs",
+              "download_detour": "direct"
+            },
+            {
+              "tag": "geoip-telegram",
+              "type": "remote",
+              "format": "binary",
+              "url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs",
+              "download_detour": "direct"
+            },
+            {
+              "tag": "geoip-cn",
+              "type": "remote",
+              "format": "binary",
+              "url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs",
+              "download_detour": "direct"
+            }
+        ],
+        "rules": [
+            {
+                "inbound": "tun-in",
+                "action": "sniff"
+            },
+            {
+                "protocol": "dns",
+                "action": "hijack-dns"
+            },
+            {
+                "port": 853,
+                "network": "tcp",
+                "action": "reject"
+            },
+            {
+                "port": 443,
+                "network": "udp",
+                "action": "reject"
+            },
+            {
+                "rule_set": "geosite-youtube",
+                "outbound": "Youtube"
+            },
+            {
+                "rule_set": "geosite-microsoft",
+                "outbound": "Microsoft"
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn",
+                "outbound": "proxy"
+            },
+            {
+                "rule_set": "geoip-telegram",
+                "outbound": "Telegram"
+            },
+            {
+                "rule_set": "geoip-cn",
+                "outbound": "direct"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            }
+        ],
+        "final": "proxy",
+        "auto_detect_interface": true
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "address": [
+                "172.16.0.1/30"
+            ],
+            "mtu": 1492,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "system"
+        }
+    ],
+    "outbounds": [
+        {
+          "tag": "proxy",
+          "type": "selector",
+          "interrupt_exist_connections": true,
+          "outbounds": [
+            "{all}"
+          ]
+        },
+        {
+          "tag": "Telegram",
+          "type": "selector",
+          "interrupt_exist_connections": true,
+          "outbounds": [
+            "proxy",
+            "{all}"
+          ]
+        },
+        {
+          "tag": "Youtube",
+          "type": "selector",
+          "interrupt_exist_connections": true,
+          "outbounds": [
+            "proxy",
+            "{all}"
+          ]
+        },
+        {
+          "tag": "Microsoft",
+          "type": "selector",
+          "interrupt_exist_connections": true,
+          "outbounds": [
+            "proxy",
+            "{all}"
+          ]
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        }
+    ],
+    "experimental": {
+        "cache_file": {
+            "enabled": true,
+            "path": "cache.db",
+            "store_fakeip": true,
+            "store_rdrc": true
+        },
+        "clash_api": {
+        "external_controller": "127.0.0.1:9090",
+        "external_ui": "ui",
+        "external_ui_download_url": "https://ghp.yeye.moe/https://github.com/MetaCubeX/metacubexd/archive/gh-pages.zip",
+        "external_ui_download_detour": "direct",
+        "secret": ""
+        }
+    }
+}

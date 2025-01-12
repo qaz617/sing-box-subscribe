@@ -17,12 +17,12 @@
                 "address": "https://dns.alidns.com/dns-query",
                 "address_resolver": "dns_resolver",
                 "strategy": "ipv4_only",
-                "detour": "direct"
+                "detour": "国内"
             },
             {
                 "tag": "dns_resolver",
                 "address": "223.5.5.5",
-                "detour": "direct"
+                "detour": "国内"
             },
             {
                 "tag": "dns_success",
@@ -151,7 +151,7 @@
             },
             {
                 "rule_set": "geoip-cn",
-                "outbound": "direct"
+                "outbound": "国内"
             },
             {
                 "ip_is_private": true,
@@ -208,6 +208,18 @@
           "outbounds": [
             "proxy",
             "{all}"
+          ]
+        },
+        {
+          "tag": "国内",
+          "type": "selector",
+          "interrupt_exist_connections": true,
+          "outbounds": [
+            "direct",
+            "{all}"
+          ],
+          "filter":[
+              {"action":"include","keywords":["国内"]}
           ]
         },
         {

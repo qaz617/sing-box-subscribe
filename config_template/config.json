@@ -6,35 +6,48 @@
     "dns": {
         "servers": [
             {
+                "type": "tcp",
                 "tag": "dns_proxy",
-                "address": "tcp://1.1.1.1",
-                "address_resolver": "dns_resolver",
-                "strategy": "ipv4_only",
-                "detour": "proxy"
+                "detour": "proxy",
+                "server": "1.1.1.1",
+                "strategy": "ipv4_only"
             },
             {
+                "type": "https",
                 "tag": "dns_direct",
-                "address": "https://dns.alidns.com/dns-query",
-                "address_resolver": "dns_resolver",
-                "strategy": "ipv4_only",
-                "detour": "国内"
+                "detour": "direct",
+                "server": "223.5.5.5",
+                "strategy": "ipv4_only"
             },
             {
                 "tag": "dns_resolver",
-                "address": "223.5.5.5",
-                "detour": "国内"
+                "type": "udp",
+                "server": "223.5.5.5",
+                "detour": "direct",
+                "strategy": "ipv4_only"
             },
             {
+                "type": "predefined",
                 "tag": "dns_success",
-                "address": "rcode://success"
+                "responses": [
+                    {
+                        "rcode": "NOERROR"
+                    }
+                ]
             },
             {
+                "type": "predefined",
                 "tag": "dns_refused",
-                "address": "rcode://refused"
+                "responses": [
+                    {
+                        "rcode": "REFUSED"
+                    }
+                ]
             },
             {
                 "tag": "dns_fakeip",
-                "address": "fakeip"
+                "type": "fakeip",
+                "inet4_range": "198.18.0.0/15"
             }
         ],
         "rules": [
@@ -70,11 +83,7 @@
             }
         ],
         "final": "dns_direct",
-        "independent_cache": true,
-        "fakeip": {
-            "enabled": true,
-            "inet4_range": "198.18.0.0/15"
-        }
+        "independent_cache": true
     },
     "route": {
         "rule_set": [

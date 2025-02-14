@@ -9,22 +9,19 @@
                 "type": "tcp",
                 "tag": "dns_proxy",
                 "detour": "proxy",
-                "server": "1.1.1.1",
-                "strategy": "ipv4_only"
+                "server": "1.1.1.1"
             },
             {
                 "type": "https",
                 "tag": "dns_direct",
                 "detour": "direct",
-                "server": "223.5.5.5",
-                "strategy": "ipv4_only"
+                "server": "223.5.5.5"
             },
             {
                 "tag": "dns_resolver",
                 "type": "udp",
                 "server": "223.5.5.5",
-                "detour": "direct",
-                "strategy": "ipv4_only"
+                "detour": "direct"
             },
             {
                 "type": "predefined",
@@ -51,10 +48,6 @@
             }
         ],
         "rules": [
-            {
-                "outbound": "any",
-                "server": "dns_resolver"
-            },
             {
                 "rule_set": "geosite-geolocation-!cn",
                 "query_type": [
@@ -86,6 +79,9 @@
         "independent_cache": true
     },
     "route": {
+        "default_domain_resolver": {
+            "server": "dns_resolver"
+        },
         "rule_set": [
             {
               "tag": "geosite-youtube",

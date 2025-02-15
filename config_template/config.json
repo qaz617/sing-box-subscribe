@@ -136,17 +136,13 @@
                 "action": "hijack-dns"
             },
             {
-                "rule_set": "geosite-category-ads-all",
-                "clash_mode": "Rule",
-                "action": "reject"
-            },
-            {
-                "rule_set": "geosite-category-ads-all",
                 "clash_mode": "Global",
+                "action": "route",
                 "outbound": "proxy"
             },
             {
                 "clash_mode": "Direct",
+                "action": "route",
                 "outbound": "direct"
             },
             {
@@ -157,6 +153,10 @@
             {
                 "port": 443,
                 "network": "udp",
+                "action": "reject"
+            },
+            {
+                "rule_set": "geosite-category-ads-all",
                 "action": "reject"
             },
             {

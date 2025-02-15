@@ -146,9 +146,12 @@
                 "outbound": "Proxy"
             },
             {
-                "rule_set": "geosite-category-ads-all",
                 "clash_mode": "direct",
                 "outbound": "direct"
+            },
+            {
+                "clash_mode": "global",
+                "outbound": "Proxy"
             },
             {
                 "port": 853,

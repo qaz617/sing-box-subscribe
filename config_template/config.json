@@ -128,7 +128,7 @@
         ],
         "rules": [
             {
-                "inbound": ["tun-in", "mixed-in"],
+                "inbound": "tun-in",
                 "action": "sniff"
             },
             {
@@ -183,20 +183,7 @@
             "mtu": 1492,
             "auto_route": true,
             "strict_route": true,
-            "stack": "system",
-            "platform": {
-                "http_proxy": {
-                    "enabled": true,
-                    "server": "127.0.0.1",
-                    "server_port": 7890
-                }
-            }
-        },
-        {
-            "tag": "mixed-in",
-            "type": "mixed",
-            "listen": "127.0.0.1",
-            "listen_port": 7890
+            "stack": "system"
         }
     ],
     "outbounds": [

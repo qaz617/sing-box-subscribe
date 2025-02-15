@@ -140,16 +140,6 @@
                 "action": "hijack-dns"
             },
             {
-                "clash_mode": "Global",
-                "action": "route",
-                "outbound": "proxy"
-            },
-            {
-                "clash_mode": "Direct",
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
                 "port": 853,
                 "network": "tcp",
                 "action": "reject"

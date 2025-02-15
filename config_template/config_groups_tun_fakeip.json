@@ -541,6 +541,9 @@
     {
       "tag": "jp",
       "type": "selector",
+      "outbounds":[
+        "{all}"
+      ],
       "filter":[
         {"action":"include","keywords":["🇯🇵|JP|jp|日本|日|Japan"]}
       ]

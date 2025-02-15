@@ -49,10 +49,6 @@
         ],
         "rules": [
             {
-                "rule_set": "geosite-category-ads-all",
-                "server": "dns_success"
-            },
-            {
                 "rule_set": "geosite-geolocation-!cn",
                 "query_type": [
                     "A",
@@ -147,10 +143,6 @@
             {
                 "port": 443,
                 "network": "udp",
-                "action": "reject"
-            },
-            {
-                "rule_set": "geosite-category-ads-all",
                 "action": "reject"
             },
             {

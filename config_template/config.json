@@ -19,35 +19,23 @@
             },
             {
                 "tag": "dns_resolver",
-                "type": "udp",
+                "type": "quic",
                 "server": "223.5.5.5",
                 "detour": "direct"
             },
             {
-                "type": "predefined",
-                "tag": "dns_success",
-                "responses": [
-                    {
-                        "rcode": "NOERROR"
-                    }
-                ]
-            },
-            {
-                "type": "predefined",
-                "tag": "dns_refused",
-                "responses": [
-                    {
-                        "rcode": "REFUSED"
-                    }
-                ]
-            },
-            {
                 "tag": "dns_fakeip",
                 "type": "fakeip",
-                "inet4_range": "198.18.0.0/15"
+                "inet4_range": "198.18.0.0/15",
+                "inet6_range": "fc00::/18"
             }
         ],
         "rules": [
+            {
+				"rule_set": "geosite-category-ads-all",
+				"rcode": "NOERROR",
+				"action": "predefined"
+			},
             {
                 "rule_set": "geosite-geolocation-!cn",
                 "query_type": [
@@ -70,9 +58,8 @@
                     "CNAME"
                 ],
                 "invert": true,
-                "server": "dns_refused",
-                "action": "route-options",
-                "disable_cache": true
+                "rcode": "REFUSED",
+                "action": "route-options"
             }
         ],
         "final": "dns_direct",
@@ -146,6 +133,15 @@
                 "action": "reject"
             },
             {
+				"process_name": [
+					"WeChat.exe",
+					"NGBrowser.exe",
+					"QQ.exe",
+					"WeChatAppEx.exe"
+				],
+				"outbound": "direct"
+			},
+            {
                 "rule_set": "geosite-youtube",
                 "outbound": "Youtube"
             },
@@ -178,7 +174,8 @@
             "type": "tun",
             "tag": "tun-in",
             "address": [
-                "172.16.0.1/30"
+                "172.16.0.1/30",
+				"fdfe:dcba:9876::1/126"
             ],
             "mtu": 1492,
             "auto_route": true,
@@ -253,5 +250,11 @@
         "external_ui_download_detour": "direct",
         "secret": ""
         }
-    }
+    },
+    "ntp": {
+		"enabled": true,
+		"server": "time.apple.com",
+		"server_port": 123,
+		"interval": "30m"
+	}
 }

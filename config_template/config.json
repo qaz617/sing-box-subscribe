@@ -32,10 +32,10 @@
         ],
         "rules": [
             {
-				"rule_set": "geosite-category-ads-all",
-				"rcode": "NOERROR",
-				"action": "predefined"
-			},
+		    "rule_set": "geosite-category-ads-all",
+		    "rcode": "NOERROR",
+		    "action": "predefined"
+	    },
             {
                 "rule_set": "geosite-geolocation-!cn",
                 "query_type": [
@@ -133,14 +133,14 @@
                 "action": "reject"
             },
             {
-				"process_name": [
-					"WeChat.exe",
-					"NGBrowser.exe",
-					"QQ.exe",
-					"WeChatAppEx.exe"
-				],
-				"outbound": "direct"
-			},
+		    "process_name": [
+			    "WeChat.exe",
+			    "NGBrowser.exe",
+			    "QQ.exe",
+			    "WeChatAppEx.exe"
+		    ],
+		    "outbound": "direct"
+	    },
             {
                 "rule_set": "geosite-youtube",
                 "outbound": "Youtube"
@@ -175,7 +175,7 @@
             "tag": "tun-in",
             "address": [
                 "172.16.0.1/30",
-				"fdfe:dcba:9876::1/126"
+		"fdfe:dcba:9876::1/126"
             ],
             "mtu": 1492,
             "auto_route": true,
@@ -252,9 +252,9 @@
         }
     },
     "ntp": {
-		"enabled": true,
-		"server": "time.apple.com",
-		"server_port": 123,
-		"interval": "30m"
-	}
+	"enabled": true,
+	"server": "time.apple.com",
+	"server_port": 123,
+	"interval": "30m"
+    }
 }

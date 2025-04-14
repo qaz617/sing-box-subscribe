@@ -57,7 +57,7 @@
                 ],
                 "invert": true,
                 "rcode": "REFUSED",
-                "action": "route-options"
+                "action": "predefined"
             }
         ],
         "final": "dns_direct",
